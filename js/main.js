@@ -253,7 +253,7 @@
 })();
 
 // ── BOOKING MODAL (global scope) ──────────────
-function openBookingModal() {
+function openBookingModal(branch) {
   var modal = document.getElementById('bookingModal');
   if (modal) {
     modal.classList.add('active');
@@ -263,6 +263,13 @@ function openBookingModal() {
     if (dateInput) {
       var today = new Date().toISOString().split('T')[0];
       dateInput.setAttribute('min', today);
+    }
+    // Pre-select branch if provided
+    if (branch) {
+      var branchSelect = document.getElementById('bookBranch');
+      if (branchSelect) {
+        branchSelect.value = branch;
+      }
     }
     // Close mobile menu if open
     var menuToggle = document.getElementById('menuToggle');
