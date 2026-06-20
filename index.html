@@ -42,9 +42,9 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#reviews">Reviews</a></li>
-      <li class="nav-links-cta"><a href="https://wa.me/96879319571" target="_blank">Book Now</a></li>
+      <li class="nav-links-cta"><a href="#" onclick="openBookingModal(); return false;">Book Now</a></li>
     </ul>
-    <a href="https://wa.me/96879319571" target="_blank" class="nav-cta">Book Now</a>
+    <a href="#" onclick="openBookingModal(); return false;" class="nav-cta">Book Now</a>
   </nav>
 
   <!-- ── HERO ────────────────────────────────── -->
@@ -349,6 +349,81 @@
       <div class="footer-copy">Because you're <span>one in a Melon</span> ✨</div>
     </div>
   </footer>
+
+  <!-- ── BOOKING MODAL ────────────────────────── -->
+  <div id="bookingModal" class="booking-modal">
+    <div class="booking-modal-overlay"></div>
+    <div class="booking-modal-content">
+      <button class="booking-modal-close" onclick="closeBookingModal()">&times;</button>
+      <div class="booking-modal-header">
+        <div class="booking-modal-overline">Reserve Your Visit</div>
+        <h3 class="booking-modal-title">Book an <em>Appointment</em></h3>
+        <p class="booking-modal-subtitle">Fill in the details below and we'll confirm your appointment via WhatsApp.</p>
+      </div>
+      <form id="bookingForm" class="booking-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bookName">Full Name</label>
+            <input type="text" id="bookName" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="bookPhone">Phone Number</label>
+            <input type="tel" id="bookPhone" placeholder="+968 ..." required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bookBranch">Branch</label>
+            <select id="bookBranch" required>
+              <option value="" disabled selected>Select branch</option>
+              <option value="almawaleh">📍 AlMawaleh</option>
+              <option value="ministry">📍 Ministry Street (A'Raya)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="bookService">Service</label>
+            <select id="bookService" required>
+              <option value="" disabled selected>Select service</option>
+              <option value="Gel Manicure">Gel Manicure</option>
+              <option value="Nail Art">Nail Art</option>
+              <option value="Acrylic Extensions">Acrylic Extensions</option>
+              <option value="Hair & Styling">Hair & Styling</option>
+              <option value="Facials">Facials</option>
+              <option value="Asian Spa">Asian Spa</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bookDate">Preferred Date</label>
+            <input type="date" id="bookDate" required>
+          </div>
+          <div class="form-group">
+            <label for="bookTime">Preferred Time</label>
+            <select id="bookTime" required>
+              <option value="" disabled selected>Select time</option>
+              <option value="10:00 AM">10:00 AM</option>
+              <option value="11:00 AM">11:00 AM</option>
+              <option value="12:00 PM">12:00 PM</option>
+              <option value="01:00 PM">01:00 PM</option>
+              <option value="02:00 PM">02:00 PM</option>
+              <option value="03:00 PM">03:00 PM</option>
+              <option value="04:00 PM">04:00 PM</option>
+              <option value="05:00 PM">05:00 PM</option>
+              <option value="06:00 PM">06:00 PM</option>
+              <option value="07:00 PM">07:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group form-group-full">
+          <label for="bookNotes">Additional Notes <span class="optional">(optional)</span></label>
+          <textarea id="bookNotes" rows="3" placeholder="Any special requests or preferences..."></textarea>
+        </div>
+        <button type="submit" class="booking-form-submit">Send via WhatsApp →</button>
+      </form>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="js/main.js"></script>

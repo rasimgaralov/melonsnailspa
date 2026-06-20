@@ -251,3 +251,101 @@
   }
 
 })();
+
+// ── BOOKING MODAL (global scope) ──────────────
+function openBookingModal() {
+  var modal = document.getElementById('bookingModal');
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    // Set min date to today
+    var dateInput = document.getElementById('bookDate');
+    if (dateInput) {
+      var today = new Date().toISOString().split('T')[0];
+      dateInput.setAttribute('min', today);
+    }
+    // Close mobile menu if open
+    var menuToggle = document.getElementById('menuToggle');
+    var navLinks = document.querySelector('.nav-links');
+    if (menuToggle && navLinks) {
+      menuToggle.classList.remove('active');
+      navLinks.classList.remove('open');
+    }
+  }
+}
+
+function closeBookingModal() {
+  var modal = document.getElementById('bookingModal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+// Close on overlay click
+document.addEventListener('DOMContentLoaded', function () {
+  var overlay = document.querySelector('.booking-modal-overlay');
+  if (overlay) {
+    overlay.addEventListener('click', closeBookingModal);
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeBookingModal();
+  });
+
+  // Form submission
+  var form = document.getElementById('bookingForm');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var name = document.getElementById('bookName').value.trim();
+      var phone = document.getElementById('bookPhone').value.trim();
+      var branch = document.getElementById('bookBranch').value;
+      var service = document.getElementById('bookService').value;
+      var date = document.getElementById('bookDate').value;
+      var time = document.getElementById('bookTime').value;
+      var notes = document.getElementById('bookNotes').value.trim();
+
+      // Format date nicely
+      var dateObj = new Date(date + 'T00:00:00');
+      var formattedDate = dateObj.toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+      // Branch display name and WhatsApp number
+      var branchName, waNumber;
+      if (branch === 'almawaleh') {
+        branchName = 'AlMawaleh';
+        waNumber = '96879319571';
+      } else {
+        branchName = "Ministry Street (A'Raya)";
+        waNumber = '96872228340';
+      }
+
+      // Build WhatsApp message
+      var message = '✨ *MELONS — Appointment Request*\n\n';
+      message += '👤 *Name:* ' + name + '\n';
+      message += '📞 *Phone:* ' + phone + '\n';
+      message += '📍 *Branch:* ' + branchName + '\n';
+      message += '💅 *Service:* ' + service + '\n';
+      message += '📅 *Date:* ' + formattedDate + '\n';
+      message += '🕐 *Time:* ' + time + '\n';
+      if (notes) {
+        message += '📝 *Notes:* ' + notes + '\n';
+      }
+      message += '\nThank you! Looking forward to your confirmation. 🍉';
+
+      var waUrl = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(message);
+      window.open(waUrl, '_blank');
+
+      // Close modal and reset form
+      closeBookingModal();
+      form.reset();
+    });
+  }
+});
