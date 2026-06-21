@@ -1739,9 +1739,7 @@ footer {
   }
 
   .hero-info-right {
-    bottom: 60px;
-    right: 32px;
-    max-width: 280px;
+    display: none;
   }
 
   #about {
