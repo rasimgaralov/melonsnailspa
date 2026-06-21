@@ -39,12 +39,17 @@ window.scrollTo(0, 0);
   video.load();
 
   // ── CANVAS SIZING ─────────────────────────
+  var lastW = window.innerWidth;
   function sizeCanvas() {
     heroCanvas.width  = window.innerWidth;
     heroCanvas.height = window.innerHeight;
+    lastW = window.innerWidth;
   }
   sizeCanvas();
   window.addEventListener('resize', function () {
+    // Only resize on actual width change (orientation/window),
+    // ignore height-only changes from mobile browser chrome
+    if (Math.abs(window.innerWidth - lastW) < 1) return;
     sizeCanvas();
     // Redraw if we already captured the frame
     if (hasTransitioned && video.readyState >= 2) {
