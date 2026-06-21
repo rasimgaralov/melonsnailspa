@@ -1609,7 +1609,7 @@ footer {
     background: rgba(28, 19, 21, 0.45);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    z-index: 199;
+    z-index: 99;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s ease, visibility 0.4s ease;
