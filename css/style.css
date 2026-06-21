@@ -452,7 +452,8 @@ img {
   transform: translateX(4px);
 }
 
-/* ── SCROLL INDICATOR ──────────────────────── *//* Bottom stats — hidden on desktop, shown on mobile */
+/* ── SCROLL INDICATOR ──────────────────────── */
+/* Bottom stats — hidden on desktop, shown on mobile */
 .hero-info-bottom {
   display: none;
   position: absolute;
@@ -1898,7 +1899,7 @@ footer {
   .hero-info-bottom {
     display: block;
     position: absolute;
-    bottom: 100px;
+    bottom: 120px;
     left: 32px;
     z-index: 2;
   }
