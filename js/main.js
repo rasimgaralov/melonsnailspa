@@ -9,6 +9,13 @@ if ('scrollRestoration' in history) {
 }
 window.scrollTo(0, 0);
 
+// Fix mobile viewport height (prevents jump from browser chrome)
+function setVH() {
+  document.documentElement.style.setProperty('--vh', window.innerHeight + 'px');
+}
+setVH();
+window.addEventListener('resize', setVH);
+
 (function () {
   'use strict';
 
