@@ -452,7 +452,11 @@ img {
   transform: translateX(4px);
 }
 
-/* ── SCROLL INDICATOR ──────────────────────── */
+/* ── SCROLL INDICATOR ──────────────────────── *//* Bottom stats — hidden on desktop, shown on mobile */
+.hero-info-bottom {
+  display: none;
+}
+
 .hero-scroll {
   position: absolute;
   bottom: 40px;
@@ -1865,28 +1869,27 @@ footer {
   }
 
   .hero-info-left {
-    top: 0;
+    top: 120px;
     left: 32px;
-    right: 32px;
-    bottom: 0;
-    max-width: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 120px;
-    padding-bottom: 60px;
-  }
-
-  .hero-info-left .hero-est:first-of-type {
-    margin-top: auto;
-  }
-
-  .hero-info-left .hero-est {
-    margin-top: 4px;
+    max-width: 300px;
   }
 
   .hero-info-right {
     display: none;
+  }
+
+  /* Hide est stats from hero-info-left on mobile */
+  .hero-info-left .hero-est {
+    display: none;
+  }
+
+  /* Show bottom stats on mobile */
+  .hero-info-bottom {
+    display: block;
+    position: absolute;
+    bottom: 100px;
+    left: 32px;
+    z-index: 2;
   }
 
   #about {
