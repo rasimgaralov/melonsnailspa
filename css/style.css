@@ -1865,9 +1865,24 @@ footer {
   }
 
   .hero-info-left {
-    top: 120px;
+    top: 0;
     left: 32px;
-    max-width: 300px;
+    right: 32px;
+    bottom: 0;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 120px;
+    padding-bottom: 60px;
+  }
+
+  .hero-info-left .hero-est:first-of-type {
+    margin-top: auto;
+  }
+
+  .hero-info-left .hero-est {
+    margin-top: 4px;
   }
 
   .hero-info-right {
